@@ -191,11 +191,11 @@ class MeteoSwissWeather(
                 str(CODE_TO_CONDITION_MAP.get(symbolId, ("", None))[0]) or None
             )
             if cond is None:
-                _LOGGER.error(
-                    "Expected a known int for the forecast icon, not None",
+                _LOGGER.warning(
+                    "Expected a known int for the forecast icon, got %s",
                     symbolId,
                 )
-                return STATE_UNAVAILABLE
+                return None
             _LOGGER.debug(
                 "Current symbol is %s, condition is: %s",
                 symbolId,
